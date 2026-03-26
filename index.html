@@ -3,43 +3,82 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Be My Valentine? 💘</title>
+  <title>Please Be My Easter Egg 🐣</title>
   <style>
     :root { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+
     body {
-      margin: 0; min-height: 100vh; display: grid; place-items: center;
-      background: radial-gradient(circle at top, #ffe0ec, #fff);
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at top, #fff4cc, #ffe6f0, #ffffff);
       color: #1b1b1b;
     }
+
     .card {
       width: min(520px, 92vw);
-      background: rgba(255,255,255,.85);
+      background: rgba(255,255,255,.9);
       border: 1px solid rgba(0,0,0,.08);
       border-radius: 18px;
       padding: 26px;
       box-shadow: 0 10px 30px rgba(0,0,0,.08);
       text-align: center;
     }
-    h1 { margin: 0 0 10px; font-size: 2rem; }
-    p { margin: 0 0 18px; font-size: 1.05rem; opacity: .9; }
-    .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 2rem;
+    }
+
+    p {
+      margin: 0 0 18px;
+      font-size: 1.05rem;
+      opacity: .9;
+    }
+
+    .btns {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
     button {
-      border: 0; padding: 12px 18px; border-radius: 999px; cursor: pointer;
-      font-size: 1rem; font-weight: 700;
+      border: 0;
+      padding: 12px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 700;
       transition: transform .08s ease, box-shadow .2s ease;
       box-shadow: 0 8px 18px rgba(0,0,0,.10);
     }
-    button:active { transform: translateY(1px) scale(.99); }
-    .yes { background: #ff2e74; color: white; }
-    .no  { background: #f1f1f1; color: #222; }
-    .hint { margin-top: 16px; font-size: .95rem; opacity: .8; }
 
-    /* Popup */
+    button:active {
+      transform: translateY(1px) scale(.99);
+    }
+
+    .yes {
+      background: #ff7f50;
+      color: white;
+    }
+
+    .yes-cn {
+      background: #ffb703;
+      color: #222;
+    }
+
     .overlay {
-      position: fixed; inset: 0; display: none; place-items: center;
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
       background: rgba(0,0,0,.55);
       padding: 18px;
+      z-index: 999;
     }
+
     .popup {
       width: min(560px, 94vw);
       background: white;
@@ -49,76 +88,112 @@
       box-shadow: 0 18px 60px rgba(0,0,0,.25);
       position: relative;
     }
-    .popup h2 { margin: 10px 0 8px; }
-    .gif {
+
+    .popup h2 {
+      margin: 10px 0 8px;
+    }
+
+    .gif,
+    .photo {
       width: 100%;
-      max-height: 340px;
+      max-height: 380px;
       object-fit: cover;
       border-radius: 14px;
       border: 1px solid rgba(0,0,0,.08);
     }
+
     .close {
-      position: absolute; top: 10px; right: 10px;
-      width: 38px; height: 38px; border-radius: 999px;
-      background: #f2f2f2; font-weight: 900;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: #f2f2f2;
+      font-weight: 900;
       box-shadow: none;
     }
   </style>
 </head>
 <body>
   <main class="card">
-    <h1>Baby Will you be my Valentine? 💘</h1>
-    <p>From T.Mntungwa🙃</p>
+    <h1>Please be my Easter egg 🐣💛</h1>
+    <p>You only have two choices... and both are yes 😌</p>
 
     <div class="btns">
-      <button class="yes" id="yesBtn">Yes 💖</button>
-      <button class="no" id="noBtn">No 🙈</button>
+      <button class="yes" id="yesBtn">Yes 💛</button>
+      <button class="yes-cn" id="yesChineseBtn">是 🥚</button>
     </div>
-
-    <div class="hint" id="msg"></div>
   </main>
 
-  <div class="overlay" id="overlay" aria-hidden="true">
+  <!-- YES popup -->
+  <div class="overlay" id="yesOverlay" aria-hidden="true">
     <div class="popup" role="dialog" aria-modal="true" aria-label="Celebration">
-      <button class="close" id="closeBtn" aria-label="Close">✕</button>
+      <button class="close" id="closeYesBtn" aria-label="Close">✕</button>
       <img
         class="gif"
-        alt="Celebration!"
-        src="https://media.giphy.com/media/xUA7bhwVKKFdMkTlmg/giphy.gif""
+        alt="Celebration GIF"
+        src="https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUyeGhidHhka2ppZ2V3OHZvZXdyM3RsNjlheXZsaXpkODMzMGd5OWZsZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/GxIdtANXpn3qL1FG25/200w.gif"
       />
-      <h2>Yaaay! 🎉💞</h2>
-      <p>Thanks baby, i cant wait to see you next week❤️.</p>
+      <h2>Yaaay 🐣🎉</h2>
+      <p>You said yes.</p>
+    </div>
+  </div>
+
+  <!-- Chinese YES popup -->
+  <div class="overlay" id="chinaOverlay" aria-hidden="true">
+    <div class="popup" role="dialog" aria-modal="true" aria-label="Chinese Yes">
+      <button class="close" id="closeChinaBtn" aria-label="Close">✕</button>
+      <img
+        class="photo"
+        alt="Attached picture"
+        src="your-photo.jpg"
+      />
+      <h2>You have just said yes in Chinese</h2>
     </div>
   </div>
 
   <script>
     const yesBtn = document.getElementById("yesBtn");
-    const noBtn = document.getElementById("noBtn");
-    const msg = document.getElementById("msg");
+    const yesChineseBtn = document.getElementById("yesChineseBtn");
 
-    const overlay = document.getElementById("overlay");
-    const closeBtn = document.getElementById("closeBtn");
+    const yesOverlay = document.getElementById("yesOverlay");
+    const chinaOverlay = document.getElementById("chinaOverlay");
+
+    const closeYesBtn = document.getElementById("closeYesBtn");
+    const closeChinaBtn = document.getElementById("closeChinaBtn");
 
     yesBtn.addEventListener("click", () => {
-      overlay.style.display = "grid";
-      overlay.setAttribute("aria-hidden", "false");
+      yesOverlay.style.display = "grid";
+      yesOverlay.setAttribute("aria-hidden", "false");
     });
 
-    noBtn.addEventListener("click", () => {
-      msg.textContent = "Okay 😅 If you change your mind, the Yes button will still be here.";
+    yesChineseBtn.addEventListener("click", () => {
+      chinaOverlay.style.display = "grid";
+      chinaOverlay.setAttribute("aria-hidden", "false");
     });
 
-    function closePopup() {
+    function closePopup(overlay) {
       overlay.style.display = "none";
       overlay.setAttribute("aria-hidden", "true");
     }
 
-    closeBtn.addEventListener("click", closePopup);
-    overlay.addEventListener("click", (e) => {
-      if (e.target === overlay) closePopup();
+    closeYesBtn.addEventListener("click", () => closePopup(yesOverlay));
+    closeChinaBtn.addEventListener("click", () => closePopup(chinaOverlay));
+
+    yesOverlay.addEventListener("click", (e) => {
+      if (e.target === yesOverlay) closePopup(yesOverlay);
     });
+
+    chinaOverlay.addEventListener("click", (e) => {
+      if (e.target === chinaOverlay) closePopup(chinaOverlay);
+    });
+
     window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closePopup();
+      if (e.key === "Escape") {
+        closePopup(yesOverlay);
+        closePopup(chinaOverlay);
+      }
     });
   </script>
 </body>
